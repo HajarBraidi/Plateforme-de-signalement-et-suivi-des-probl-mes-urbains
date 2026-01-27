@@ -41,7 +41,7 @@ pipeline {
             steps {
                 script {
                     echo "Nettoyage des fichiers de build précédents..."
-                    sh 'mvn clean'
+                    bat 'mvn clean'
                     echo "Nettoyage terminé!"
                 }
             }
@@ -51,7 +51,7 @@ pipeline {
             steps {
                 script {
                     echo "Compilation du code source..."
-                    sh 'mvn compile'
+                    bat 'mvn compile'
                     echo "Compilation réussie!"
                 }
             }
@@ -61,7 +61,7 @@ pipeline {
             steps {
                 script {
                     echo "Exécution des tests unitaires..."
-                    sh 'mvn test'
+                    bat 'mvn test'
                     echo "Tests terminés!"
                 }
             }
@@ -77,7 +77,7 @@ pipeline {
             steps {
                 script {
                     echo "Création du fichier WAR..."
-                    sh 'mvn package -DskipTests'
+                    bat 'mvn package -DskipTests'
                     echo "Package créé avec succès!"
                 }
             }
@@ -105,7 +105,7 @@ pipeline {
                     echo "=========================================="
                     echo "RAPPORT DE BUILD"
                     echo "=========================================="
-                    sh '''
+                    bat '''
                         echo "Fichiers WAR générés:"
                         find target -name "*.war" -type f
                         echo ""
