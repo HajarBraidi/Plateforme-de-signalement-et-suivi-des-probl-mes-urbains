@@ -1,4 +1,7 @@
+version: "3.8"
+
 services:
+  # MySQL pour ton projet J2EE
   mysql:
     image: mysql:8.0
     container_name: project-j2ee
@@ -17,5 +20,47 @@ services:
       timeout: 20s
       retries: 10
 
+  # Base de données PostgreSQL pour SonarQube
+  sonarqube-db:
+    image: postgres:13
+    container_name: sonarqube-postgres
+    environment:
+      POSTGRES_USER: sonar
+      POSTGRES_PASSWORD: sonar
+      POSTGRES_DB: sonarqube
+    volumes:
+      - sonarqube-db-data:/var/lib/postgresql/data
+    networks:
+      - sonarnet
+    restart: unless-stopped
+
+  # Serveur SonarQube
+  sonarqube:
+    image: sonarqube:community
+    container_name: sonarqube-server
+    depends_on:
+      - sonarqube-db
+    environment:
+      SONAR_JDBC_URL: jdbc:postgresql://sonarqube-db:5432/sonarqube
+      SONAR_JDBC_USERNAME: sonar
+      SONAR_JDBC_PASSWORD: sonar
+    volumes:
+      - sonarqube-data:/opt/sonarqube/data
+      - sonarqube-extensions:/opt/sonarqube/extensions
+      - sonarqube-logs:/opt/sonarqube/logs
+    ports:
+      - "9000:9000"
+    networks:
+      - sonarnet
+    restart: unless-stopped
+
 volumes:
   mysql-data:
+  sonarqube-db-data:
+  sonarqube-data:
+  sonarqube-extensions:
+  sonarqube-logs:
+
+networks:
+  sonarnet:
+    driver: bridge
