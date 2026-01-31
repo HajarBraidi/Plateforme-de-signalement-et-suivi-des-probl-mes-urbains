@@ -28,6 +28,7 @@ public class SignalementCRUDTest {
 		s.setDateCreation(new Date(System.currentTimeMillis()));
 		s.setImagePath("image path");		
 		s.setStatut(Statut.NEW);
+		 s.setDesignation("Éclairage - Test Get");
 		s.setCommentaire("je souhaite que le problème se résoud au plutot" );
 		s.setIdCitoyen(null);
 		
@@ -46,6 +47,7 @@ public class SignalementCRUDTest {
 		s.setDateCreation(new Date(System.currentTimeMillis()));
 		s.setImagePath("image path");
 		s.setStatut(Statut.NEW);
+		 s.setDesignation("Éclairage - Test Get");
 		s.setCommentaire("je souhaite que le problème se résoud au plutot");
 		s.setIdCitoyen(null);
 
@@ -69,6 +71,7 @@ public class SignalementCRUDTest {
 		s.setDateCreation(new Date(System.currentTimeMillis()));
 		s.setImagePath("image path - 2");
 		s.setStatut(Statut.NEW);
+		 s.setDesignation("Éclairage - Test Get");
 		s.setCommentaire("je souhaite que le problème se résoud au plutot - 2");
 		s.setIdCitoyen(null);
 
@@ -93,6 +96,7 @@ public class SignalementCRUDTest {
 		s.setDateCreation(new Date(System.currentTimeMillis()));
 		s.setImagePath("image path - 3");
 		s.setStatut(Statut.NEW);
+		 s.setDesignation("Éclairage - Test Get");
 		s.setCommentaire("je souhaite que le problème se résoud au plutot - 3");
 		s.setIdCitoyen(null);
 
@@ -104,5 +108,4 @@ public class SignalementCRUDTest {
 
 		
 	}
-
 }
