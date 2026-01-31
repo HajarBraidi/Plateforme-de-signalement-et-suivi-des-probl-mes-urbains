@@ -102,7 +102,7 @@ pipeline {
                             mvn clean verify sonar:sonar ^
                             -Dsonar.projectKey=plateforme-urbaine ^
                             -Dsonar.projectName="Plateforme de Signalement Urbain" ^
-                            -Dsonar.host.url=http://host.docker.internal:9000 ^
+                            -Dsonar.host.url=http://localhost:9000 ^
                             -Dsonar.java.binaries=target/classes
                         '''
                         
